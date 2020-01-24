@@ -15,7 +15,7 @@ rital(l1)
 rital(l2)
 rital(l3)
 
-interline = null([l1'; l2']);
+interline = null([l2'; l3']);
 interline = interline/interline(3);
 scatter(interline(1),interline(2));
 hold off
