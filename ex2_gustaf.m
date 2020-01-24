@@ -20,4 +20,4 @@ interline = interline/interline(3);
 scatter(interline(1),interline(2));
 hold off
 d = abs(interline'*l1)/sqrt(l1(1)^2 + l2(2)^2);
-
+!
