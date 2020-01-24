@@ -1,0 +1,14 @@
+close all
+clear
+load compEx2.mat
+
+church = imread('compEx2.jpg');
+
+l1 = null(p1');
+l2 = null(p2');
+l3 = null(p3');
+
+
+imsh(church);
+hold on
+rital 
