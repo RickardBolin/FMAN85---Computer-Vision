@@ -1,5 +1,8 @@
-coords2D = pflat(x2DCopy);
-coords3D = pflat(x3DCopy);
+load compEx1.mat
+
+
+coords2D = pflat(x2D);
+coords3D = pflat(x3D);
 
 plot(coords2D(1,:),coords2D(2,:),'.') %Plots a point at (a(1,i),a(2,i)) for  each i.
 figure
