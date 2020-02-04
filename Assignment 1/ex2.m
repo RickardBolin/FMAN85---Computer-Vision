@@ -16,6 +16,6 @@ rital(l3)
 
 interline = null([l2'; l3']);
 interline = interline/interline(3);
-scatter(interline(1),interline(2));
+scatter(interline(1),interline(2),60,'r','filled');
 hold off
 d = abs(interline'*l1)/sqrt(l1(1)^2 + l1(2)^2);
