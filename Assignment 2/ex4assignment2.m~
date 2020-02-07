@@ -8,10 +8,9 @@ K = [1000 0 500;
 
 Kinv = inv(K);
 
-%Answers for report:
-normalizedP = Kinv*P;
-p1 = Kinv*[0;0;1];
-p2 = Kinv*[0;1000;1];
-p3 = Kinv*[1000;0;1];
-p4 = Kinv*[1000;1000;1];
 
+Kinv*[0;0;1];
+
+normalizedP = Kinv*P;
+
+normalizedP*[0;0;1]
