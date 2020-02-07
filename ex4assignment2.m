@@ -11,4 +11,4 @@ Kinv = inv(K);
 
 normalizedP = Kinv*[0;0;1];
 
-Kinv*P
+Kinv*P 
