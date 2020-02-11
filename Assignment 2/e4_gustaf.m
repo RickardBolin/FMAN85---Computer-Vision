@@ -1,6 +1,5 @@
 clear 
 close all
-
 cube1 = imread('cube1.JPG');
 cube2 = imread('cube2.JPG');
 [f1 d1] = vl_sift(single(rgb2gray(cube1)), 'PeakThresh', 1);
