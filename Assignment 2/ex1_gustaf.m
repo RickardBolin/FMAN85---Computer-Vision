@@ -11,7 +11,7 @@ vis = isfinite(x{1}(1,:));
 points = pflat(P{1}*X);
 imshow(im{1})
 hold on
-    scatter(points(1,vis), points(2,vis))
+scatter(points(1,vis), points(2,vis))
 hold off
 
 %%

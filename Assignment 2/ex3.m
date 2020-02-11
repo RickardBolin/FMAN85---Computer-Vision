@@ -41,3 +41,16 @@ scatter3(b1(1),b1(2),b1(3))
 hold on
 quiver3(b1(1),b1(2),b1(3),n1(1),n1(2),n1(3),1/norm(n1));
 scatter3(X(1,:),X(2,:),X(3,:))
+
+img_pts = pflat(P*X);
+figure
+imshow(cube1)
+hold on
+scatter(img_pts(1,:), img_pts(2,:))
+scatter(x{1}(1,:), x{1}(2,:), 'x')
+
+[K,R] = rq(P(:,1:3));
+
+
+
+
