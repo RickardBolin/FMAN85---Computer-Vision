@@ -33,9 +33,6 @@ hold on
 scatter(T1points(1,vis), T1points(2,vis), '.')
 scatter(points(1,vis), points(2,vis))
 
-
-
-
 %%
 figure
 scatter3(T1X(1,:),T1X(2,:),T1X(3,:))
