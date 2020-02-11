@@ -28,14 +28,14 @@ end
 [U,S,V] = svd(M);
 
 eig = S(49,49);
-v = V(:,end);
+v = -V(:,end);
 mv = norm(M*v);
 
 senior_P = [v(1:4)';v(5:8)';v(9:12)'];
 
 P = N\senior_P;
-b1 = null(P);
-n1 = P(3,1:3);
+b1 = pflat(null(P));
+n1 = P(3,1:3)/norm(P(3,1:3));
 
 scatter3(b1(1),b1(2),b1(3))
 hold on
