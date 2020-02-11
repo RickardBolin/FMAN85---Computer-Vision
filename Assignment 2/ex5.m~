@@ -29,8 +29,8 @@ for i = 1:length(a_dirs)
     p1(:,i) = a_center;% + a_dirs(:,i);
     p2(:,i) = b_center;% + b_dirs(:,i);
     v = p2(:,i) - p1(:,i);
-    proj_a = ((v'*a_dirs(:,i))./norm(a_dirs(:,i)))*a_dirs(:,i)./norm(a_dirs(:,i));
-    proj_b = ((v'*b_dirs(:,i))./norm(b_dirs(:,i)))*b_dirs(:,i)./norm(b_dirs(:,i));
+    proj_a = (v'*a_dirs(:,i)./norm(a_dirs(:,i)))*a_dirs(:,i)./norm(a_dirs(:,i));
+    proj_b = (v'*b_dirs(:,i)./norm(b_dirs(:,i)))*b_dirs(:,i)./norm(b_dirs(:,i));
     p1(:,i) = p1(:,i) + proj_a;
     p2(:,i) = p2(:,i) + proj_b;
 end
