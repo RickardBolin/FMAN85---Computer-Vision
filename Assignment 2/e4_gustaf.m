@@ -2,8 +2,8 @@ clear
 close all
 cube1 = imread('cube1.JPG');
 cube2 = imread('cube2.JPG');
-[f1 d1] = vl_sift(single(rgb2gray(cube1)), 'PeakThresh', 1);
-[f2 d2] = vl_sift(single(rgb2gray(cube2)), 'PeakThresh', 1);
+[f1 d1] = vl_sift(single(rgb2gray(cube1)), 'PeakThresh', 3);
+[f2 d2] = vl_sift(single(rgb2gray(cube2)), 'PeakThresh', 3);
 figure
 imshow(cube1)
 hold on
