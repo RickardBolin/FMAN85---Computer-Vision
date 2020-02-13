@@ -57,4 +57,5 @@ hold off
 figure
 hist ( abs ( sum ( l.*x{2})) ,100);
 
+F./F(3,3)
 
