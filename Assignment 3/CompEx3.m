@@ -19,9 +19,13 @@ for i = 1:length(y1)
 end
 [U,S,V] = svd(M);
 S(9,9)
-Eapprox = reshape(V(:,9), [3 3]);
-[U,S,V] = svd(Eapprox);
-S
+E = reshape(V(:,9), [3 3]);
+
+%correct
+plot(diag(y2'*E*y1));
+
+[U,S,V] = svd(E);
+
 if det (U*V') >0
     E = U* diag ([1 1 0])* V';
 else
@@ -29,13 +33,9 @@ else
     E = U* diag ([1 1 0])* V';
 end
 figure
-plot(diag(y2'*E*y1));
-
-E = ((K')\E)/K;
-
 perm = randperm( size ( x{1} ,2));
 
-l = E*x1;
+l = K'\E/K*x1;
 l = l ./ sqrt ( repmat ( l(1 ,:).^2 + l(2 ,:).^2 ,[3 1]));
 figure
 imshow(kron1)
@@ -52,6 +52,6 @@ hist ( abs ( sum ( l.*x2)) ,100);
 
 save('ex3.mat', 'E');
 
-E./E(3,3)
+%E./E(3,3)
 
 

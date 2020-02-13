@@ -1,3 +1,7 @@
+clear
+close all
+restoredefaultpath
+addpath('assignment3data')
 U = [1/sqrt(2),-1/sqrt(2),0;1/sqrt(2),1/sqrt(2),0;0,0,1];
 V = [1,0,0;0,0,-1;0,1,0];
 det(U*V'); % = 1
