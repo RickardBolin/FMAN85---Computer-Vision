@@ -1,5 +1,6 @@
 clear
 close all
+addpath('assignment3data')
 load compEx1data.mat
 notnan = isfinite(x{1}(1,:));
 notnan = isfinite(x{2}(1,:)).*notnan;
@@ -24,4 +25,5 @@ for i = 1:length(x1)
     M(i,4:6) = x1(2,i)*[1 1 1].*x2(:,i)';
     M(i,7:9) = x1(3,i)*[1 1 1].*x2(:,i)';
 end
+[U,S,V] = svd(M);
 
