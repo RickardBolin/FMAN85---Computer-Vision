@@ -1,8 +1,8 @@
 clear
 close all
+
 restoredefaultpath
 addpath('assignment3data')
-
 load compEx1data.mat
 kron1 = imread('kronan1.JPG');
 kron2 = imread('kronan2.JPG');
@@ -31,6 +31,7 @@ for i = 1:length(x1)
     M(i,7:9) = senior_x1(3,i)*[1 1 1].*senior_x2(:,i)';
 end
 [U,S,V] = svd(M);
+
 v = V(:,9);
 senior_F = reshape(v,[3,3]);
 [U,S,V] = svd(senior_F);
@@ -59,6 +60,6 @@ figure
 hist ( abs ( sum ( l.*x{2})) ,100);
 
 save('ex1.mat', 'N1', 'N2', 'F', 'x1', 'x2')
-F./F(3,3)
+F./F(3,3);
 
 
