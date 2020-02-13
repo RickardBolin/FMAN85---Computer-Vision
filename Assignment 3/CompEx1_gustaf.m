@@ -59,4 +59,5 @@ figure
 hist ( abs ( sum ( l.*x{2})) ,100);
 
 F./F(3,3)
+save('ex1.mat', 'N1', 'N2', 'F', 'x1', 'x2')
 
