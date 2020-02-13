@@ -2,6 +2,9 @@ clear
 close all
 addpath('assignment3data')
 load compEx1data.mat
+kron1 = imread('kronan1.JPG');
+kron2 = imread('kronan2.JPG');
+
 notnan = isfinite(x{1}(1,:));
 notnan = isfinite(x{2}(1,:)).*notnan;
 x1 = x{1}(:,logical(notnan));
@@ -34,9 +37,25 @@ S(3,3) = 0;
 senior_F = U*S*V';
 F = N2'*senior_F*N1;
 
+figure
 plot(diag(senior_x2'*senior_F*senior_x1));
 
+perm = randperm( size ( x{1} ,2));
+
 l = F*x{1};
-l = l ./ sqrt ( repmat ( l (1 ,:).^2 + l (2 ,:).^2 ,[3 1]));
-rital(l(:,1))
+l = l ./ sqrt ( repmat ( l(1 ,:).^2 + l(2 ,:).^2 ,[3 1]));
+figure
+imshow(kron1)
+hold on
+scatter(x{1}(1,perm(1:10)), x{1}(2,perm(1:10)),'ro')
+figure
+imshow(kron2)
+hold on
+rital(l(:,perm(1:10)))
+scatter(x{2}(1,perm(1:10)), x{2}(2,perm(1:10)),'ro')
+hold off
+figure
+hist ( abs ( sum ( l.*x{2})) ,100);
+
+F./F(3,3)
 
