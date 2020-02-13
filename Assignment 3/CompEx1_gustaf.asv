@@ -28,5 +28,5 @@ end
 [U,S,V] = svd(M);
 lambda = S(9,9);
 v = V(:,9);
-senior_F = reshape(v,[3,3])';
-F = N2'*F*N1;
+senrio_F = reshape(v,[3,3])';
+F = N2'FN1
