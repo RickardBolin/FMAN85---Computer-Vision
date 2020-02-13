@@ -29,14 +29,7 @@ end
 lambda = S(9,9);
 v = V(:,9);
 senior_F = reshape(v,[3,3])';
-[U,S,V] = svd(senior_F);
-S(3,3) = 0;
-senior_F = U*S*V';
-F = N2'*senior_F*N1;
+F = N2'\senior_F/N1;
 
-plot(diag(senior_x2'*senior_F*senior_x1));
-
-l = F*x{1};
-l = l ./ sqrt ( repmat ( l (1 ,:).^2 + l (2 ,:).^2 ,[3 1]));
-rital(l(:,1))
+for i = 1:lenght(x1
 
