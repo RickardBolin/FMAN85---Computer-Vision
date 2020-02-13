@@ -11,6 +11,7 @@ Pb = [11.7770    2.3359   -6.1660  139.8236;
     0.0031    0.0028    0.0033    0.1505];
 
 
+<<<<<<< HEAD
 
 PaA = Pa(1:3,1:3);
 Pat = Pa(1:3,4);
@@ -33,13 +34,37 @@ for i = 1:length(a_dirs)
     proj_b = ((v'*b_dirs(:,i))./norm(b_dirs(:,i)))*b_dirs(:,i)./norm(b_dirs(:,i));
     p1(:,i) = p1(:,i) + proj_a;
     p2(:,i) = p2(:,i) + proj_b;
+=======
+X = zeros(4,length(x1));
+for i = 1:length(x1)
+   M = [Pa, [-x1(:,i); -1], [0; 0; 0] ; Pb, [0; 0; 0], [-x2(:,i); -1]];
+   [U,S,V] = svd(M);
+   v = V(:,end);
+   X(:,i) = v(1:4);
+   
+>>>>>>> a02ca6186e3fefd2804b418966e6fe3ba10e0b6f
 end
 
-points = (p1+p2)/2;
+X = pflat(X);
 
+xproj1 = pflat( Pa * X );
+xproj2 = pflat( Pb * X );
+
+good_points = ( sqrt( sum(( x1 - xproj1(1:2 ,:)).^2)) < 3 & ...
+sqrt( sum(( x2 - xproj2(1:2 ,:)).^2)) < 3);
+
+scatter3(X(1,good_points), X(2,good_points), X(3,good_points));
+
+<<<<<<< HEAD
 scatter3(points(1,:),points(2,:),points(3,:))
 scatter3(p1(1,:), p1(2,:), p1(3,:))
 hold on
 scatter3(p2(1, :), p2(2,:), p2(3,:))
+=======
+imshow(cube1)
+hold on
+scatter(x1(1,good_points), x1(2,good_points))
+scatter(xproj1(1,good_points),xproj1(2,good_points),'x')
+>>>>>>> a02ca6186e3fefd2804b418966e6fe3ba10e0b6f
 
 

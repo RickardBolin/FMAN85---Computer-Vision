@@ -34,7 +34,14 @@ P2 = N\senior_P;
 b2 = pflat(null(P2));
 n2 = P2(3,1:3)/norm(P2(3,1:3));
 
+img_pts = pflat(P2*X);
+figure
+imshow(cube2)
+hold on
+scatter(img_pts(1,:), img_pts(2,:))
+scatter(x{2}(1,:), x{2}(2,:), 'x')
 
+%%
 mu = mean(x{1}, 2);
 sigma = std(x{1}');
 
