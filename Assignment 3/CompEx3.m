@@ -49,6 +49,9 @@ scatter(x2(1,perm(1:10)), x2(2,perm(1:10)),'ro')
 hold off
 figure
 hist ( abs ( sum ( l.*x2)) ,100);
+
+save('ex3.mat', 'E');
+
 E./E(3,3)
 
 
