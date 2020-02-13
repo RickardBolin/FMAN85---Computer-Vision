@@ -1,5 +1,7 @@
 clear
 close all
+restoredefaultpath
+addpath('assignment2data')
 load compEx3data.mat
 
 cube1 = imread('cube1.JPG');
@@ -39,6 +41,7 @@ imshow(cube2)
 hold on
 scatter(img_pts(1,:), img_pts(2,:))
 scatter(x{2}(1,:), x{2}(2,:), 'x')
+hold off
 
 %%
 mu = mean(x{1}, 2);
@@ -82,6 +85,7 @@ imshow(cube1)
 hold on
 scatter(img_pts(1,:), img_pts(2,:))
 scatter(x{1}(1,:), x{1}(2,:), 'x')
+hold off
 
 [K,R] = rq(P(:,1:3));
 
