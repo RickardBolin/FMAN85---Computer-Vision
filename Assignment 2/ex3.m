@@ -5,7 +5,6 @@ load compEx3data.mat
 cube1 = imread('cube1.JPG');
 cube2 = imread('cube2.JPG');
 
-
 mu = mean(x{2}, 2);
 sigma = std(x{2}');
 
