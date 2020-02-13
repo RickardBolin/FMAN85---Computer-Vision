@@ -26,4 +26,6 @@ for i = 1:length(x1)
     M(i,7:9) = x1(3,i)*[1 1 1].*x2(:,i)';
 end
 [U,S,V] = svd(M);
-
+lambda = S(9,9);
+v = V(:,9);
+F = reshape(v,[3,3])';
