@@ -26,12 +26,29 @@ xproj2 = pflat( Pb * X );
 good_points = ( sqrt( sum(( x1 - xproj1(1:2 ,:)).^2)) < 3 & ...
 sqrt( sum(( x2 - xproj2(1:2 ,:)).^2)) < 3);
 
-scatter3(X(1,good_points), X(2,good_points), X(3,good_points));
-
-
+figure;
 imshow(cube1)
 hold on
 scatter(x1(1,good_points), x1(2,good_points))
 scatter(xproj1(1,good_points),xproj1(2,good_points),'x')
 
+figure;
+imshow(cube2)
+hold on
+scatter(x2(1,good_points), x2(2,good_points))
+scatter(xproj2(1,good_points),xproj2(2,good_points),'x')
 
+figure;
+scatter3(X(1,good_points), X(2,good_points), X(3,good_points));
+hold on
+axis equal
+
+b1 = pflat(null(Pa));
+n1 = Pa(3,1:3)/norm(Pa(3,1:3));
+b2 = pflat(null(Pb));
+n2 = Pb(3,1:3)/norm(Pb(3,1:3));
+
+scatter3(b1(1),b1(2),b1(3))
+quiver3(b1(1),b1(2),b1(3),n1(1),n1(2),n1(3),1/norm(n1));
+scatter3(b2(1),b2(2),b2(3))
+quiver3(b2(1),b2(2),b2(3),n2(1),n2(2),n2(3),1/norm(n2));
