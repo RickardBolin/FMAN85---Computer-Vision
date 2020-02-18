@@ -11,6 +11,7 @@ x2 = x{2};
 
 y1 = K\x1;
 y2 = K\x2;
+
 M = zeros(length(y1), 9);
 for i = 1:length(y1)
     M(i,1:3) = y1(1,i)*[1 1 1].*y2(:,i)';
@@ -18,7 +19,6 @@ for i = 1:length(y1)
     M(i,7:9) = y1(3,i)*[1 1 1].*y2(:,i)';
 end
 [U,S,V] = svd(M);
-S(9,9)
 E = reshape(V(:,9), [3 3]);
 
 %correct
@@ -32,6 +32,7 @@ else
     V = -V;
     E = U* diag ([1 1 0])* V';
 end
+
 figure
 perm = randperm( size ( x{1} ,2));
 
