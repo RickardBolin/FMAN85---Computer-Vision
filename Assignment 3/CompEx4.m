@@ -38,7 +38,6 @@ xproj2 = pflat(K*Pb * X );
 x1 = pflat(K*x1);
 x2 = pflat(K*x2);
 
-
 good_points = ( sqrt( sum(( x1(1:2 ,:) - xproj1(1:2 ,:)).^2)) < 3 & ...
 sqrt( sum(( x2(1:2 ,:) - xproj2(1:2 ,:)).^2)) < 3);
 

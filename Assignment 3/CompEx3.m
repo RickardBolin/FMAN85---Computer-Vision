@@ -33,26 +33,30 @@ else
     E = U* diag ([1 1 0])* V';
 end
 
-figure
 perm = randperm( size ( x{1} ,2));
 
 l = K'\E/K*x1;
 l = l ./ sqrt ( repmat ( l(1 ,:).^2 + l(2 ,:).^2 ,[3 1]));
+%%
 figure
 imshow(kron1)
 hold on
 scatter(x1(1,perm(1:10)), x1(2,perm(1:10)),'ro')
+%%
 figure
 imshow(kron2)
 hold on
 rital(l(:,perm(1:10)))
 scatter(x2(1,perm(1:10)), x2(2,perm(1:10)),'ro')
 hold off
+%%
 figure
-hist ( abs ( sum ( l.*x2)) ,100);
+dists = abs ( sum ( l.*x2));
+mean_dist = mean(dists)
+hist ( dists,100);
 
 save('ex3.mat', 'E');
 
-%E./E(3,3)
+E./E(3,3)
 
 
