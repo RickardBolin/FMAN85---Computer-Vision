@@ -42,6 +42,7 @@ x2 = pflat(K*x2);
 good_points = ( sqrt( sum(( x1(1:2 ,:) - xproj1(1:2 ,:)).^2)) < 3 & ...
 sqrt( sum(( x2(1:2 ,:) - xproj2(1:2 ,:)).^2)) < 3);
 
+%%
 figure
 scatter3(X(1,good_points),X(2,good_points),X(3,good_points))
 hold on
@@ -51,6 +52,7 @@ scatter3(b2(1),b2(2),b2(3))
 quiver3(b2(1),b2(2),b2(3),n2(1),n2(2),n2(3),1/norm(n2));
 hold off
 
+%%
 figure
 imshow(kron1)
 hold on
@@ -58,6 +60,7 @@ scatter(x1(1,good_points), x1(2,good_points))
 scatter(xproj1(1,good_points),xproj1(2,good_points),'x')
 hold off
 
+%%
 figure
 imshow(kron2)
 hold on

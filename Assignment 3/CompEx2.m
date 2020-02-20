@@ -11,6 +11,9 @@ Pa = [eye(3,3), zeros(3,1)];
 Pb = [[0, -e2(3), e2(2); 
        e2(3),0,-e2(1);
        -e2(2),e2(1),0]*F,e2];
+   
+x1 = N1*x1;
+x2 = N2*x2;
 
 X = zeros(4,length(x1));
 for i = 1:length(x1)

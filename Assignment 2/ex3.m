@@ -72,13 +72,15 @@ P = N\senior_P;
 b1 = pflat(null(P));
 n1 = P(3,1:3)/norm(P(3,1:3));
 
-scatter3(b1(1),b1(2),b1(3))
+%%
+scatter3(X(1,:),X(2,:),X(3,:))
 hold on
+scatter3(b1(1),b1(2),b1(3))
 quiver3(b1(1),b1(2),b1(3),n1(1),n1(2),n1(3),1/norm(n1));
 scatter3(b2(1),b2(2),b2(3))
 quiver3(b2(1),b2(2),b2(3),n2(1),n2(2),n2(3),1/norm(n2));
-scatter3(X(1,:),X(2,:),X(3,:))
 
+%%
 img_pts = pflat(P*X);
 figure
 imshow(cube1)
@@ -87,7 +89,11 @@ scatter(img_pts(1,:), img_pts(2,:))
 scatter(x{1}(1,:), x{1}(2,:), 'x')
 hold off
 
-[K,R] = rq(P(:,1:3));
+%%
+[K,R] = rq(P(:,1:3))
+[K2,R2] = rq(P2(:,1:3))
+det(R)
+det(K)
 
 
 
