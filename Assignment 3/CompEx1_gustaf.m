@@ -57,14 +57,11 @@ rital(l(:,perm(1:10)))
 scatter(x{2}(1,perm(1:10)), x{2}(2,perm(1:10)),'ro')
 hold off
 figure
-histogram( abs ( sum ( l.*x{2})) ,100); %Borde vara dist istället för sum right?
-
-figure
-dists_between_points_and_lines = sqrt( sum ( (l.*x{2}).*(l.*x{2}) ) );
-mean_dist = mean(dists_between_points_and_lines)
-histogram( dists_between_points_and_lines ,100); %Beppes förslag
+dists = abs ( sum ( l.*x{2}));
+mean_dist = mean(dists)
+histogram( dists ,100);
 
 save('ex1.mat', 'N1', 'N2', 'F', 'x', 'senior_F', 'senior_x1', 'senior_x2')
-F./F(3,3);
+F./F(3,3)
 
 
