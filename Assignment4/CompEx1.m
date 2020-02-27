@@ -78,12 +78,14 @@ hold on;
 scatter(projected_inliers(1,:),projected_inliers(2,:),'r')
 
 %% plotting x in pic
-A1 = P1(:,1:3); A2 = P2(:,1:3);
 P1kalib = K\P1;
 P2kalib = K\P2;
+xk = K\x;
 pi = pflat(plane);
-H = P2kalib(:,1:3) - P2kalib(:,4)*pi(1:3)';
-x2 = H*x;
+H = P2kalib(:,1:3) - (P2kalib(:,4)*pi(1:3)');
+x2 = H*xk;
+x2 = pflat(K*x2);
+
 
 figure;
 subplot(1, 2, 1);
