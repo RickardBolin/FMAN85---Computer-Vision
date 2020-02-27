@@ -39,9 +39,12 @@ img_pts = pflat(P2*X);
 figure
 imshow(cube2)
 hold on
-scatter(img_pts(1,:), img_pts(2,:))
-scatter(x{2}(1,:), x{2}(2,:), 'x')
+scatter(img_pts(1,:), img_pts(2,:), 200, 'o');
+scatter(x{2}(1,:), x{2}(2,:),200 , 'x');
+
 hold off
+
+[K,R] = rq(P2(:,1:3));
 
 %%
 mu = mean(x{1}, 2);
@@ -83,8 +86,8 @@ img_pts = pflat(P*X);
 figure
 imshow(cube1)
 hold on
-scatter(img_pts(1,:), img_pts(2,:))
-scatter(x{1}(1,:), x{1}(2,:), 'x')
+scatter(img_pts(1,:), img_pts(2,:), 200, 'o')
+scatter(x{1}(1,:), x{1}(2,:), 200, 'x')
 hold off
 
 [K,R] = rq(P(:,1:3));

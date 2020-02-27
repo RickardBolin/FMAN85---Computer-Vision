@@ -10,6 +10,7 @@ load ex3.mat
 
 x1 = K\x{1};
 x2 = K\x{2};
+
 Pa = [eye(3) zeros(3,1)];
 [U,S,V] = svd(E);
 W = [0 -1 0; 1 0 0; 0 0 1];
@@ -31,12 +32,16 @@ end
 
 X = pflat(X);
 
-xproj1 = pflat(Pa * X );
-xproj2 = pflat(Pb * X );
+xproj1 = pflat(K*Pa * X );
+xproj2 = pflat(K*Pb * X );
+
+x1 = pflat(K*x1);
+x2 = pflat(K*x2);
 
 good_points = ( sqrt( sum(( x1(1:2 ,:) - xproj1(1:2 ,:)).^2)) < 3 & ...
 sqrt( sum(( x2(1:2 ,:) - xproj2(1:2 ,:)).^2)) < 3);
 
+%%
 figure
 scatter3(X(1,good_points),X(2,good_points),X(3,good_points))
 hold on
@@ -44,8 +49,9 @@ scatter3(b1(1),b1(2),b1(3))
 quiver3(b1(1),b1(2),b1(3),n1(1),n1(2),n1(3),1/norm(n1));
 scatter3(b2(1),b2(2),b2(3))
 quiver3(b2(1),b2(2),b2(3),n2(1),n2(2),n2(3),1/norm(n2));
+hold off
 
-
+%%
 figure
 imshow(kron1)
 hold on
@@ -53,6 +59,7 @@ scatter(x1(1,good_points), x1(2,good_points))
 scatter(xproj1(1,good_points),xproj1(2,good_points),'x')
 hold off
 
+%%
 figure
 imshow(kron2)
 hold on

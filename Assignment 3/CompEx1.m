@@ -7,10 +7,8 @@ load compEx1data.mat
 kron1 = imread('kronan1.JPG');
 kron2 = imread('kronan2.JPG');
 
-notnan = isfinite(x{1}(1,:));
-notnan = isfinite(x{2}(1,:)).*notnan;
-x1 = x{1}(:,logical(notnan));
-x2 = x{2}(:,logical(notnan));
+x1 = x{1};
+x2 = x{2};
 mu = mean(x1, 2);
 sigma = std(x1');
 N1 = [1/sigma(1) 0 -(1/sigma(1))*mu(1);
