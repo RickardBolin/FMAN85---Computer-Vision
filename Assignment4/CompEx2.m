@@ -1,3 +1,8 @@
+clear
+close all
+restoredefaultpath
+addpath('assignment4data')
+
 a = imread('a.jpg');
 b = imread('b.jpg');
 

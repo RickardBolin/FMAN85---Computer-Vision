@@ -9,5 +9,5 @@ house2 = imread('house2.jpg');
 
 X = pflat(X);
 
-rms = @(plane) mean((plane*X(1:3,:)).^2)./(sum(plane(1:3).^2));
+rms = @(plane) mean(([plane 1]*[X(1:3,:); ones(1,length(X))]).^2)./(sum(plane(1:3).^2));
 plane = fminsearch(rms, [1 1 1]);
