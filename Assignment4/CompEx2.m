@@ -5,25 +5,28 @@ addpath('assignment4data')
 addpath('../vlfeat-0.9.21/toolbox')
 vl_setup
 
-a = imread('a.jpg');
-b = imread('b.jpg');
+a = imread('beppea.jpg');
+b = imread('beppeb.jpg');
 
+a = imresize(a, 0.4);
+b = imresize(b, 0.4);
+a = imrotate(a, -90);
+b = imrotate(b, -90);
 
 [ fA, dA ] = vl_sift ( single ( rgb2gray (a )) );
 [ fB, dB ] = vl_sift ( single ( rgb2gray (b )) );
 matches = vl_ubcmatch (dA , dB );
 xA = fA (1:2 , matches (1 ,:));
 xB = fB (1:2 , matches (2 ,:));
-<<<<<<< HEAD
 
-=======
-    
 xA = [xA; ones(1,length(xA))];
 xB = [xB; ones(1,length(xB))];
 
-outliers = zeros(100,1);
+iterations = 10000;
+outliers = zeros(iterations,1);
+Hs = zeros(3,3,iterations);
 
-for iter = 1:10000
+for iter = 1:iterations
     
     perm = randperm(length(xA));
     
@@ -39,15 +42,21 @@ for iter = 1:10000
     end
 
     [U,S,V] = svd(M);
-    H = reshape(V(:,end), [3 3]);
-    xBt = pflat(H'*xA);
+    Hs(:,:,iter) = reshape(V(:,end), [3 3])';
+    xBt = pflat(Hs(:,:,iter)*xA);
     outliers(iter) = sum(vecnorm(xBt - xB) > 5);
-    if(outliers(iter) < 55)
-        disp("outliers < 55")
-        break
-    end
 end
 
+bestiter = find(outliers == min(outliers));
+
+
+bestH = Hs(:,:,bestiter);
+
+if(size(bestH,3) > 1)
+    bestH = bestH(:,:,1);
+end
+
+xBt = pflat(bestH*xA);
 goodbois = vecnorm(xBt - xB) <= 5;
 
 figure
@@ -58,7 +67,7 @@ plot ([ xA(1 , goodbois); xB(1 , goodbois)+ size( a ,2)] , ...
 hold off
 
 %%
-bestH = double(H);
+bestH = double(bestH');
 tform = maketform('projective', bestH);
 transfbounds = findbounds( tform ,[1 1; size(a ,2) size(a ,1)]);
 % Finds the bounds of the transformed image
@@ -67,9 +76,10 @@ ydata = [ min([ transfbounds(: ,2); 1]) max([ transfbounds(: ,2); size(b ,1)])];
 % Computes bounds of a new image such that both the old ones will fit .
 [ newA ] = imtransform(a , tform , 'xdata' , xdata , 'ydata', ydata );
 % Transform the image using bestH
-tform2 = maketform( 'projective', eye (3));
+tform2 = maketform( 'projective', eye(3));
 [ newB ] = imtransform(b , tform2 , 'xdata', xdata , 'ydata' , ydata , 'size', size ( newA ));
 % Creates a larger version of B
 newAB = newB ;
 newAB( newB < newA ) = newA( newB < newA );
->>>>>>> e44478cf22b76f04afa8451788a210afaf505935
+figure
+imshow(newAB);
