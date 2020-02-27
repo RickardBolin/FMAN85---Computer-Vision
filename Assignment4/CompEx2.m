@@ -11,3 +11,4 @@ imshow(b)
 matches = vl_ubcmatch (dA , dB );
 xA = fA (1:2 , matches (1 ,:));
 xB = fB (1:2 , matches (2 ,:));
+
