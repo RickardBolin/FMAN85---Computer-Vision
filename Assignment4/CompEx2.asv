@@ -14,9 +14,6 @@ b = imread('b.jpg');
 matches = vl_ubcmatch (dA , dB );
 xA = fA (1:2 , matches (1 ,:));
 xB = fB (1:2 , matches (2 ,:));
-<<<<<<< HEAD
-
-=======
     
 xA = [xA; ones(1,length(xA))];
 xB = [xB; ones(1,length(xB))];
@@ -57,19 +54,17 @@ plot ([ xA(1 , goodbois); xB(1 , goodbois)+ size( a ,2)] , ...
 [ xA(2 , goodbois); xB(2 , goodbois)] , '-' );
 hold off
 
-%%
-bestH = double(H);
-tform = maketform('projective', bestH);
+
+tform = maketform('projective', 'bestH');
 transfbounds = findbounds( tform ,[1 1; size(a ,2) size(a ,1)]);
 % Finds the bounds of the transformed image
-xdata = [ min([ transfbounds(: ,1); 1]) max([ transfbounds(: ,1); size(b ,2)])];
-ydata = [ min([ transfbounds(: ,2); 1]) max([ transfbounds(: ,2); size(b ,1)])];
+xdata = [ min ([ transfbounds(: ,1); 1]) max ([ transfbounds(: ,1); size(b ,2)])];
+ydata = [ min ([ transfbounds(: ,2); 1]) max ([ transfbounds(: ,2); size(b ,1)])];
 % Computes bounds of a new image such that both the old ones will fit .
-[ newA ] = imtransform(a , tform , 'xdata' , xdata , 'ydata', ydata );
+[ newA ] = imtransform(A , tform , 'xdata' , xdata , 'ydata', ydata );
 % Transform the image using bestH
 tform2 = maketform( 'projective', eye (3));
-[ newB ] = imtransform(b , tform2 , 'xdata', xdata , 'ydata' , ydata , 'size', size ( newA ));
+[ newB ] = imtransform (B , tform2 , 'xdata', xdata , 'ydata' , ydata , ? size ?, size ( newA ));
 % Creates a larger version of B
 newAB = newB ;
-newAB( newB < newA ) = newA( newB < newA );
->>>>>>> e44478cf22b76f04afa8451788a210afaf505935
+newAB ( newB < newA ) = newA ( newB < newA );
