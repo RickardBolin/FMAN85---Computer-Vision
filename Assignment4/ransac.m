@@ -30,7 +30,7 @@ function [bestPlane] = ransac(data,num,iter,threshDist,inlierRatio)
  
  % Plot the best fitting plane
  syms x y
- z = (bestPlane(1)*x+bestPlane(2)*y+bestPlane(4))/bestPlane(3);
+ z = -(bestPlane(1)*x+bestPlane(2)*y+bestPlane(4))/bestPlane(3);
  fmesh(z)
  
 end
