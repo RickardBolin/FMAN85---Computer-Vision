@@ -77,8 +77,8 @@ imshow(house2)
 hold on;
 scatter(projected_inliers(1,:),projected_inliers(2,:),'r')
 
-%% plotting x in pic
-A1 = P1(:,1:3); A2 = P2(:,1:3);
+%% Homeography
+A1 = K*P1(:,1:3); A2 = K*P2(:,1:3);
 H = A2/A1;
 x2 = H*x;
 figure;
