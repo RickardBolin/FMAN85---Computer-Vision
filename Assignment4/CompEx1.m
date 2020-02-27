@@ -86,7 +86,6 @@ H = P2kalib(:,1:3) - (P2kalib(:,4)*pi(1:3)');
 x2 = H*xk;
 x2 = pflat(K*x2);
 
-
 figure;
 subplot(1, 2, 1);
 imshow(house1)
