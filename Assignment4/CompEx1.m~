@@ -1,0 +1,40 @@
+clear
+close all
+restoredefaultpath
+addpath('assignment4data')
+load('compEx1data.mat')
+
+house1 = imread('house1.jpg');
+house2 = imread('house2.jpg');
+
+X = pflat(X);
+
+figure;
+scatter3(X(1,:),X(2,:),X(3,:));
+hold on;
+
+RMS = @(plane) sqrt ( sum (( plane'* X ).^2)/ size (X ,2));
+plane = fminsearch(RMS, [1 1 1 1]');
+RMS(plane) % =  2.1710e-06
+
+syms x y
+z = -(plane(1)*x+plane(2)*y+plane(4))/plane(3);
+fmesh(z)
+hold on;
+
+[plane, n_inliers, bestInlierIdx] = ransac(X,3,1000,0.1,0.5); %n_inliers = 740
+RMS(plane) % = 0.5648
+
+syms x y
+z = -(plane(1)*x+plane(2)*y+plane(4))/plane(3);
+fmesh(z)
+
+inliers = X(:,bestInlierIdx);
+
+
+
+
+
+
+
+
