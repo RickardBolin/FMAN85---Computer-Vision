@@ -18,8 +18,8 @@ RMS = @(plane) sqrt ( sum (( plane'* X ).^2)/ size (X ,2));
 plane = fminsearch(RMS, [1 1 1 1]');
 RMS(plane) % =  2.1710e-06
 
-syms x y
-z = -(plane(1)*x+plane(2)*y+plane(4))/plane(3);
+syms xx yy
+z = -(plane(1)*xx+plane(2)*yy+plane(4))/plane(3);
 fmesh(z)
 
 %%
@@ -33,8 +33,8 @@ hold on;
 [plane, n_inliers, bestInlierIdx] = ransac(X,3,1000,0.1,0.5); %n_inliers = 740
 RMS(plane) % = 0.5648
 
-syms x y
-z = -(plane(1)*x+plane(2)*y+plane(4))/plane(3);
+syms xx yy
+z = -(plane(1)*xx+plane(2)*yy+plane(4))/plane(3);
 fmesh(z)
 hold on;
 
@@ -78,9 +78,14 @@ hold on;
 scatter(projected_inliers(1,:),projected_inliers(2,:),'r')
 
 %% plotting x in pic
-A1 = P1(:,1:3); A2 = P2(:,1:3);
-H = A2/A1;
-x2 = H*x;
+P1kalib = K\P1;
+P2kalib = K\P2;
+xk = K\x;
+pi = pflat(plane);
+H = P2kalib(:,1:3) - (P2kalib(:,4)*pi(1:3)');
+x2 = H*xk;
+x2 = pflat(K*x2);
+
 figure;
 subplot(1, 2, 1);
 imshow(house1)
@@ -90,14 +95,4 @@ subplot(1, 2, 2);
 imshow(house2)
 hold on;
 scatter(x2(1,:),x2(2,:),'r')
-
-
-
-
-
-
-
-
-
-
 

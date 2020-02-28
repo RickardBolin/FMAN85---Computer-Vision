@@ -18,7 +18,7 @@ b = imrotate(b, -90);
 matches = vl_ubcmatch (dA , dB );
 xA = fA (1:2 , matches (1 ,:));
 xB = fB (1:2 , matches (2 ,:));
-    
+
 xA = [xA; ones(1,length(xA))];
 xB = [xB; ones(1,length(xB))];
 
