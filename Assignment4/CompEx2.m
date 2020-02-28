@@ -22,7 +22,7 @@ xB = fB (1:2 , matches (2 ,:));
 xA = [xA; ones(1,length(xA))];
 xB = [xB; ones(1,length(xB))];
 
-iterations = 10000;
+iterations = 1000;
 outliers = zeros(iterations,1);
 Hs = zeros(3,3,iterations);
 
@@ -30,7 +30,7 @@ for iter = 1:iterations
     
     perm = randperm(length(xA));
     
-    bois = perm(1:8);
+    bois = perm(1:4);
     
     M = zeros(2*length(bois),9);
     for i = 1:length(bois)
