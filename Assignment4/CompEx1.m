@@ -9,7 +9,7 @@ house2 = imread('house2.jpg');
 P1 = P{1}; P2 = P{2};
 X = pflat(X);
 
-%% rms fit på vanliga punkter
+%% rms fit p?? vanliga punkter
 figure;
 scatter3(X(1,:),X(2,:),X(3,:));
 hold on;
@@ -42,7 +42,7 @@ hold on;
 distances = abs (plane' * X);
 histogram(distances,100);
 
-%% rms fit på inliers
+%% rms fit p?? inliers
 figure;
 scatter3(X(1,:),X(2,:),X(3,:));
 hold on;
