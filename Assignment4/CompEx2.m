@@ -22,7 +22,7 @@ xB = fB (1:2 , matches (2 ,:));
 xA = [xA; ones(1,length(xA))];
 xB = [xB; ones(1,length(xB))];
 
-iterations = 10000;
+iterations = 100;
 outliers = zeros(iterations,1);
 Hs = zeros(3,3,iterations);
 
