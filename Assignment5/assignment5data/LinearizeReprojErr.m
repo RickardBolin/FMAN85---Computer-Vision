@@ -19,7 +19,7 @@ for i=1:length(P);
 end
 
 numpts = size(U,2);
-%Bas för tangentplanet till rotationsmångfalden.
+%Bas f?r tangentplanet till rotationsm?ngfalden.
 Ba = [0 1 0; -1 0 0; 0 0 0];
 Bb = [0 0 1; 0 0 0; -1 0 0];
 Bc = [0 0 0; 0 0 1; 0 -1 0];
@@ -48,8 +48,8 @@ U = pflat(U);
 U = U(1:3,:);
 
 for i=1:length(P);
-    %beräkna derivator för båda residualeran i alla bilder
-    %a,b,c - rotations parametrar för kamera i
+    %ber?kna derivator f?r b?da residualeran i alla bilder
+    %a,b,c - rotations parametrar f?r kamera i
     %U1,U2,U3 - 3d punkt parametrar
     %t1,t2,t3 - translations parametrar kameran.
     vis = isfinite(u{i}(1,:));
@@ -108,8 +108,8 @@ data = [];
 resnum = 0;
 B = [];
 %fprintf('\tSetting up system, camera: ');
-fprintf('\tSetting up system. ');
-%Allokera hela vektorn först två residualer för varje bild punkt
+%fprintf('\tSetting up system. ');
+%Allokera hela vektorn f?rst tv? residualer f?r varje bild punkt
 resnr = 0;
 for i = 1:length(P);
     resnr = resnr + sum(isfinite(u{i}(1,:)));
@@ -125,7 +125,7 @@ for i = 1:length(P);
     uu = u{i};
     vis = find(isfinite(uu(1,:)));
     
-    %Första residualen:
+    %F?rsta residualen:
     %3D-punkt parametrar:
     %U1-koeff
     row(lastentry+[1:length(vis)]) = resnum+[1:2:2*length(vis)]';
@@ -295,7 +295,7 @@ for i = 1:length(P);
     
     %Konstant-termer
     btmp = zeros(2*length(vis),1);
-    %Första residualen
+    %F?rsta residualen
     btmp(1:2:end) = (P{i}(1,:)*pextend(U(:,vis)))./(P{i}(3,:)*pextend(U(:,vis)))-uu(1,vis);
     %Andra residualen
     btmp(2:2:end) = (P{i}(2,:)*pextend(U(:,vis)))./(P{i}(3,:)*pextend(U(:,vis)))-uu(2,vis);
@@ -306,9 +306,9 @@ for i = 1:length(P);
 end
 
 A = sparse(row,col,data);
-%lås koordinatsystemet
-%Första kameran konstant
-%och första koordinaten i första punkten konstant
+%l?s koordinatsystemet
+%F?rsta kameran konstant
+%och f?rsta koordinaten i f?rsta punkten konstant
 A = A(:,[1:3*numpts 3*numpts+7:end]);
 A = A(:,[2:end]);
 

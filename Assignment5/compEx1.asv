@@ -9,28 +9,25 @@ kron1 = imread('kronan1.JPG');
 kron2 = imread('kronan2.JPG');
 
 
-xproj1 = pflat(K * Pa * X );
-xproj2 = pflat(K * Pb * X );
+xproj1 = pflat(Pa * X );
+xproj2 = pflat(Pb * X );
 
-res1before = vecnorm(xproj1 - x{1});
-res2before = vecnorm(xproj2 - x{2});
-
-figure
-subplot(121)
-histogram(res1before)
-subplot(122)
-histogram(res2before)
+res = 
 
 
 x1 = K\x{1};
 x2 = K\x{2};
 
 
+
+
+
+
 P = {Pa,Pb};
 u = {x1,x2};
     
 lambda = 1;
-iterations = 200;
+iterations = 500;
 
 Pnew = P;
 Unew = X;
@@ -51,8 +48,6 @@ figure
 plot(errs)
 
 %%
-
-X = Unew;
 Pa = Pnew{1};
 Pb = Pnew{2};
 
@@ -66,15 +61,6 @@ xproj2 = pflat(K*Pb * X );
 
 x1 = pflat(K*x1);
 x2 = pflat(K*x2);
-
-res1after = (vecnorm(xproj1 - x{1}));
-res2after = (vecnorm(xproj2 - x{2}));
-
-figure
-subplot(121)
-histogram(res1after)
-subplot(122)
-histogram(res2after)
 
 good_points = ( sqrt( sum(( x1(1:2 ,:) - xproj1(1:2 ,:)).^2)) < 3 & ...
 sqrt( sum(( x2(1:2 ,:) - xproj2(1:2 ,:)).^2)) < 3);
